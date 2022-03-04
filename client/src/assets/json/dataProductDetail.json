@@ -1,0 +1,14 @@
+{
+  "THE MAROCAIN PETIT": [
+    { "name": "The", "qty": "18g" },
+    { "name": "Sucre", "qty": "40g" }
+  ],
+  "THE MAROCAIN GRAND": [
+    { "name": "The", "qty": "40g" },
+    { "name": "Sucre", "qty": "100g" }
+  ],
+  "JUS ORANGE": [
+    { "name": "Orange", "qty": "400g" },
+    { "name": "Sucre", "qty": "100g" }
+  ]
+}
