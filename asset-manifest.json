@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Surcoma_Gestion_STK_2022/static/css/main.5481f9bb.css",
-    "main.js": "/Surcoma_Gestion_STK_2022/static/js/main.683a2089.js",
+    "main.js": "/Surcoma_Gestion_STK_2022/static/js/main.b479ec3a.js",
     "static/media/fa-solid-900.svg": "/Surcoma_Gestion_STK_2022/static/media/fa-solid-900.13de59f1a36b6cb4bca0.svg",
     "static/media/profile-cover.jpg": "/Surcoma_Gestion_STK_2022/static/media/profile-cover.978992455652990b161d.jpg",
     "static/media/fa-brands-400.svg": "/Surcoma_Gestion_STK_2022/static/media/fa-brands-400.216edb96b562c79adc09.svg",
@@ -31,10 +31,10 @@
     "static/media/github.svg": "/Surcoma_Gestion_STK_2022/static/media/github.6c95555646a0ecabf549179c97bf0e7d.svg",
     "index.html": "/Surcoma_Gestion_STK_2022/index.html",
     "main.5481f9bb.css.map": "/Surcoma_Gestion_STK_2022/static/css/main.5481f9bb.css.map",
-    "main.683a2089.js.map": "/Surcoma_Gestion_STK_2022/static/js/main.683a2089.js.map"
+    "main.b479ec3a.js.map": "/Surcoma_Gestion_STK_2022/static/js/main.b479ec3a.js.map"
   },
   "entrypoints": [
     "static/css/main.5481f9bb.css",
-    "static/js/main.683a2089.js"
+    "static/js/main.b479ec3a.js"
   ]
 }
