@@ -3,6 +3,7 @@ module.exports = app => {
     var router = require("express").Router();
     // Create a new Tutorial
     router.post("/uploadData", Exele.upload);
+    router.post("/stock", Exele.stock);
     // Retrieve all Tutorials
     // router.get("/get", Exele.findAll);
     // // Retrieve a single Tutorial with id

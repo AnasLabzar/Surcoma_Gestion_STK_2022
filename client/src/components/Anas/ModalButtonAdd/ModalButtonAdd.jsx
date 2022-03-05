@@ -10,10 +10,10 @@ export default function BtnAddProduct() {
   const [TVA, setTVA] = useState(0);
   const [Prix_unitaire_HT, setPrix_unitaire_HT] = useState(0);
   const [Prix_TTC, setPrix_TTC] = useState(0);
-  const [Init_qty, setInit_qty] = useState(0);
+  const [Qte, setQte] = useState(0);
   const [STK_actuel, setSTK_actuel] = useState(100);
 
-  const addToList = ()  => {
+  const addToList = () => {
     Axios.post("http://localhost:8080/Surcoma/post", {
       Nom_Article: Nom_Article,
       Désignation: Désignation,
@@ -22,7 +22,7 @@ export default function BtnAddProduct() {
       TVA: TVA,
       Prix_unitaire_HT: Prix_unitaire_HT,
       Prix_TTC: Prix_TTC,
-      Init_qty: Init_qty,
+      Qte: Qte,
       STK_actuel,
     });
   };
@@ -162,7 +162,7 @@ export default function BtnAddProduct() {
                             className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                             placeholder="Quantity"
                             onChange={(event) => {
-                              setInit_qty(event.target.value);
+                                setQte(event.target.value);
                               }}
                           />
                         </div>

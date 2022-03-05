@@ -23,6 +23,8 @@ import Login from "views/examples/Login.js";
 import Tables from "views/examples/Tables.js";
 import Icons from "views/examples/Icons.js";
 import Products from "views/examples/Products";
+import Ads from "views/examples/Ads";
+import Stuff from "views/examples/Stuff";
 
 var routes = [
   {
@@ -34,12 +36,12 @@ var routes = [
   },
   {
     path: "/maps",
-    name: "Maps",
-    icon: "ni ni-pin-3 text-orange",
+    name: "Insert Data",
+    icon: "fa fa-database",
     component: Maps,
     layout: "/admin",
   },
-    {
+  {
     path: "/Products",
     name: "Products",
     icon: "fa fa-list",
@@ -47,10 +49,10 @@ var routes = [
     layout: "/admin",
   },
   {
-    path: "/user-profile",
+    path: "/Stuff",
     name: "Stuff",
-    icon: "ni ni-single-02 text-yellow",
-    component: Profile,
+    icon: "ni ni-circle-08 text-pink",
+    component: Stuff,
     layout: "/admin",
   },
   {
@@ -61,17 +63,24 @@ var routes = [
     layout: "/admin",
   },
   {
+    path: "/ads",
+    name: "Ads",
+    icon: "fa fa-shopping-cart",
+    component: Ads,
+    layout: "/admin",
+  },
+  {
+    path: "/user-profile",
+    name: "User Profile",
+    icon: "ni ni-single-02 text-yellow",
+    component: Profile,
+    layout: "/admin",
+  },
+  {
     path: "/login",
     name: "Login",
     icon: "ni ni-key-25 text-info",
     component: Login,
-    layout: "/auth",
-  },
-  {
-    path: "/register",
-    name: "Register",
-    icon: "ni ni-circle-08 text-pink",
-    component: Register,
     layout: "/auth",
   },
 ];

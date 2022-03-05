@@ -38,7 +38,7 @@ const ProgressBar = (props) => {
     color: "white",
     fontWeight: "bold",
   };
-
+ 
   return (
     <div style={containerStyles} >
       <div style={fillerStyles} className={`${completed <= 40 ? 'bg-red-600' : 'bg-green'}`}>

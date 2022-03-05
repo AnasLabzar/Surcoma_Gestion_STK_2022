@@ -55,6 +55,7 @@ const Tables = () => {
       // console.log(response);
     });
   }, []);
+ 
   return (
     <>
       <Header />
@@ -104,7 +105,7 @@ const Tables = () => {
                       </td>
 
                       <td>
-                        {val.Qte}
+                        {val.Curr_qty}
                       </td>
 
                       <td>

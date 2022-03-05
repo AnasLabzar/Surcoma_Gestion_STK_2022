@@ -25,6 +25,7 @@ import * as XLSX from 'xlsx'
 
 // core components
 import Header from "components/Headers/Header.js";
+import BtnModalTimeOut from "components/Anas/ModalButtontimeout/ModalButtontimeout";
 
 const MapWrapper = () => {
   const mapRef = React.useRef(null);
@@ -115,7 +116,7 @@ const MapWrapper = () => {
   // it will contain array of objects
 
   // handle File
-  const fileType = ['application/vnd.ms-excel'];
+  const fileType = ['text/csv'];
   const handleFile = (e) => {
     let selectedFile = e.target.files[0];
     if (selectedFile) {
@@ -136,7 +137,6 @@ const MapWrapper = () => {
           let counter = 0
           let part = json.length > 100 ? Math.floor(json.length / 10) : Math.floor(json.length / 5)
           let slice = []
-          console.log(part);
           let calculated = []
           json.forEach((command) => {
             if (counter != part) {
@@ -148,7 +148,6 @@ const MapWrapper = () => {
               counter = 0
             }
           })
-
 
           let result = await Promise.all(
             calculated.map(async (slice) => {
@@ -162,7 +161,30 @@ const MapWrapper = () => {
             })
           )
 
-          console.log(result);
+          json = json.filter(e => !e.Article.includes('-->'))
+          json = json.reduce((output, elment) => {
+            (output[elment.Article] = output[elment.Article] || []).push(elment);
+            return output;
+          }, {});
+
+          for (const plat in json) {
+            if (Object.hasOwnProperty.call(json, plat)) {
+              const send = {
+                name: plat,
+                qty: json[plat].length,
+              };
+
+              let ress = await fetch('http://localhost:8080/exel/stock', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(send)
+              })
+              let res = await ress.json()
+              console.log(res);
+            }
+          }
         }
       }
       else {
@@ -203,10 +225,10 @@ const MapWrapper = () => {
             <label><h5>Upload Excel file</h5></label>
             <br></br>
             <input type='file' className='form-control'
-              onChange={handleFile} required></input>
+              onChange={handleFile}  required></input>
             {excelFileError && <div className='text-danger'
               style={{ marginTop: 5 + 'px' }}>{excelFileError}</div>}
-            <button type='submit' className='btn btn-success'
+            <button type='submit' onClick={BtnModalTimeOut} className='btn btn-success'
               style={{ marginTop: 5 + 'px' }}>Submit</button>
           </form>
         </div>
