@@ -1,8 +1,22 @@
-import React, {useState} from "react";
+import React, { useEffect, useState } from "react";
 import Axios from "axios";
+import Select from "react-select";
+import { STK } from "assets/json/Stock  - Feuille 1 (2)-converted (1)";
 
+const aquaticCreatures = [
+  { label: "Shark", value: "Shark" },
+  { label: "Dolphin", value: "Dolphin" },
+  { label: "Whale", value: "Whale" },
+  { label: "Octopus", value: "Octopus" },
+  { label: "Crab", value: "Crab" },
+  { label: "Lobster", value: "Lobster" },
+];
+/**
+ * The options array should contain objects.
+ * Required keys are "name" and "value" but you can have and use any number of key/value pairs.
+ */
 export default function BtnAddProduct() {
-  const [Nom_Article, setNom_Article] = useState("");
+  const [Nom_Article, setNom_Article] = useState(STK[0].value);
   const [Désignation, setDésignation] = useState("");
   console.log(Désignation);
   const [Nom_fournisseur, setNom_fournisseur] = useState("");
@@ -13,9 +27,14 @@ export default function BtnAddProduct() {
   const [Qte, setQte] = useState(0);
   const [STK_actuel, setSTK_actuel] = useState(100);
 
+ useEffect(() => {
+   console.log(Nom_Article);
+ }, [Nom_Article])
+ 
+
   const addToList = () => {
     Axios.post("http://localhost:8080/Surcoma/post", {
-      Nom_Article: Nom_Article,
+      Nom_Article: Nom_Article.value,
       Désignation: Désignation,
       Nom_fournisseur: Nom_fournisseur,
       N_Catégorie: N_Catégorie,
@@ -62,19 +81,16 @@ export default function BtnAddProduct() {
                       />
                       <div className="rounded-md shadow-sm w-[300px] -space-y-px">
                         <div>
-                          <label htmlFor="email-address" className="sr-only">
-                            Nom d'artcile
-                          </label>
-                          <input
-                            type="text"
-                            onChange={(event) => {
-                                setNom_Article(event.target.value);
-                              }}
-                            autoComplete="email"
+                          <Select
                             required
-                            className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                            placeholder="Nom d'artcile"
+
+                            // value={Nom_Article}
+                            options={STK}
+                            onChange={setNom_Article}
+                            placeholder={"Nom d'artcile"}
+                            className="appearance-none text-left rounded-none relative block w-full px-1 py-2 border-none border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                           />
+
                         </div>
                         <div>
                           <label htmlFor="password" className="sr-only">
@@ -83,8 +99,8 @@ export default function BtnAddProduct() {
                           <input
                             type="text"
                             onChange={(event) => {
-                                setDésignation(event.target.value);
-                              }}
+                              setDésignation(event.target.value);
+                            }}
                             autoComplete="current-password"
                             required
                             className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
@@ -100,8 +116,8 @@ export default function BtnAddProduct() {
                             autoComplete="current-password"
                             required
                             onChange={(event) => {
-                                setN_Catégorie(event.target.value);
-                              }}
+                              setN_Catégorie(event.target.value);
+                            }}
                             className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                             placeholder="Catégorie"
                           />
@@ -115,8 +131,8 @@ export default function BtnAddProduct() {
                             autoComplete="current-password"
                             required
                             onChange={(event) => {
-                                setTVA(event.target.value);
-                              }}
+                              setTVA(event.target.value);
+                            }}
                             className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                             placeholder="TVA"
                           />
@@ -130,8 +146,8 @@ export default function BtnAddProduct() {
                             autoComplete="current-password"
                             required
                             onChange={(event) => {
-                                setPrix_unitaire_HT(event.target.value);
-                              }}
+                              setPrix_unitaire_HT(event.target.value);
+                            }}
                             className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                             placeholder="Prix unitaire HT (MAD)"
                           />
@@ -147,8 +163,8 @@ export default function BtnAddProduct() {
                             className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                             placeholder="Prix TTC (MAD)"
                             onChange={(event) => {
-                                setPrix_TTC(event.target.value);
-                              }}
+                              setPrix_TTC(event.target.value);
+                            }}
                           />
                         </div>
                         <div>
@@ -162,8 +178,8 @@ export default function BtnAddProduct() {
                             className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                             placeholder="Quantity"
                             onChange={(event) => {
-                                setQte(event.target.value);
-                              }}
+                              setQte(event.target.value);
+                            }}
                           />
                         </div>
                         <div>
@@ -177,15 +193,15 @@ export default function BtnAddProduct() {
                             className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                             placeholder="Fournisseur"
                             onChange={(event) => {
-                                setNom_fournisseur(event.target.value);
-                              }}
+                              setNom_fournisseur(event.target.value);
+                            }}
                           />
                         </div>
                       </div>
 
                       <div>
                         <button
-                        onClick={addToList}
+                          onClick={addToList}
                           type="submit"
                           className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         >

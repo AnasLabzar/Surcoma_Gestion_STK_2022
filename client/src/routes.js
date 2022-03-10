@@ -25,6 +25,7 @@ import Icons from "views/examples/Icons.js";
 import Products from "views/examples/Products";
 import Ads from "views/examples/Ads";
 import Stuff from "views/examples/Stuff";
+import Fournisseur from "views/examples/Fournisseur";
 
 var routes = [
   {
@@ -53,6 +54,13 @@ var routes = [
     name: "Stuff",
     icon: "ni ni-circle-08 text-pink",
     component: Stuff,
+    layout: "/admin",
+  },
+  {
+    path: "/Fournisseur",
+    name: "Fournisseur",
+    icon: "fa fa-address-book-o",
+    component: Fournisseur,
     layout: "/admin",
   },
   {

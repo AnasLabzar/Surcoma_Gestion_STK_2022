@@ -112,7 +112,7 @@ const Tables = () => {
                         <ProgressBar
                           key={key}
                           bgcolor={val.STK_actuel}
-                          completed={val.STK_actuel}
+                          completed={ Math.trunc((val.Curr_qty/val.Init_qty)*100)}
                         />
                       </td>
                       <td className="text-center">

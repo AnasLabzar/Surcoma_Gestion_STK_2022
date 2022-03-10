@@ -17,7 +17,7 @@ export default function BtnModalTimeOut() {
         '<button id="toggle" class="btn btn-danger">' +
           'Dont forget to reload the page after the wait is over' +
         '</button>',
-      timer: 8000,
+      timer: 15000,
       didOpen: () => {
         const content = Swal.getHtmlContainer()
         const $ = content.querySelector.bind(content)

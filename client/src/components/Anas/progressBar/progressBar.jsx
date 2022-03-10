@@ -1,8 +1,20 @@
 import React, {useEffect, useState} from 'react';
 import Axios from "axios";
 
+const ColorPercentage = (completed) =>{
+   console.log(completed);
+  let color = "";
+  if (completed >= 70) {
+     color = "bg-green";
+  } else if (completed < 70 && completed >= 40) {
+     color = "bg-blue";
+  } else {
+     color = "bg-red-600"; 
+  }
+  return color;
+}
 const ProgressBar = (props) => {
-  const { bgcolor, completed } = props;
+  const { completed } = props;
 
   // const [STK_actuel, setSTK_actuel] = useState(100);
   // useEffect(() => {
@@ -41,7 +53,7 @@ const ProgressBar = (props) => {
  
   return (
     <div style={containerStyles} >
-      <div style={fillerStyles} className={`${completed <= 40 ? 'bg-red-600' : 'bg-green'}`}>
+      <div style={fillerStyles} className={ColorPercentage(completed)}>
         <span  style={labelStyles}>{`${completed}%`}</span>
       </div>
     </div>

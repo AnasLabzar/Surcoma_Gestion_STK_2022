@@ -10,7 +10,7 @@ const PRODUCT = {
   ],
   "THE MAROCAIN GRAND": [
     { name: "The", qty: 20 },
-    { name: "Sucre Grand", qty: 4 }
+    { name: "Sucre_Grand", qty: 4 }
   ],
 
   "CAFE ESPRESSO": [
@@ -22,24 +22,24 @@ const PRODUCT = {
     { name: "Cafe", qty: 20 },
     { name: "Sucre", qty: 3 },
     { name: "SIDI ALI 33CL", qty: 1 },
-    { name: "Lait", qty: 2 },
+    { name: "Lait de marrakech", qty: 2 },
   ],
-  "LAIT CHOCOLAT": [
+  "Lait CHOCOLAT": [
     { name: "Cacao", qty: 15 },
     { name: "Sucre", qty: 3 },
     { name: "SIDI ALI 33CL", qty: 1 },
-    { name: "Lait", qty: 2 },
+    { name: "Lait de marrakech", qty: 2 },
     { name: "Topping Chocolat", qty: 3 },
   ],
   "THE NOIR": [
     { name: "Lipton", qty: 1 },
     { name: "Sucre", qty: 4 },
-    { name: "Lait", qty: 3 },
+    { name: "Lait de marrakech", qty: 3 },
   ],
   "THE AROMATISE": [
     { name: "Camomille", qty: 1 },
     { name: "Sucre", qty: 4 },
-    { name: "Lait", qty: 3 },
+    { name: "Lait de marrakech", qty: 3 },
   ],
   "THE VERVEINE": [
     { name: "Verveine", qty: 1 },
@@ -48,15 +48,15 @@ const PRODUCT = {
   "LAIT VERVEINE": [
     { name: "Verveine", qty: 1 },
     { name: "Sucre", qty: 4 },
-    { name: "Lait", qty: 3 },
+    { name: "Lait de marrakech", qty: 3 },
   ],
-  "LAIT CHAUD": [
+  "Lait de marrakech CHAUD": [
     { name: "Sucre", qty: 3 },
-    { name: "Lait", qty: 2 },
+    { name: "Lait de marrakech", qty: 2 },
   ],
   "CAPPUCCINO": [
     { name: "Sucre", qty: 3 },
-    { name: "Lait", qty: 2 },
+    { name: "Lait de marrakech", qty: 2 },
     { name: "Cacao", qty: 10 },
     { name: "Cafe", qty: 20 },
     { name: "SIDI ALI 33CL", qty: 1 },
@@ -69,14 +69,14 @@ const PRODUCT = {
   ],
   "CAFE SURCOMA": [
     { name: "Sucre", qty: 3 },
-    { name: "Lait", qty: 2 },
+    { name: "Lait de marrakech", qty: 2 },
     { name: "Cafe", qty: 20 },
     { name: "SIDI ALI 33CL", qty: 1 },
     { name: "Topping Chocolat", qty: 10 },
   ],
   "CAFE CASSE": [
     { name: "Sucre", qty: 3 },
-    { name: "Lait", qty: 1 },
+    { name: "Lait de marrakech", qty: 1 },
     { name: "Cafe", qty: 20 },
     { name: "SIDI ALI 33CL", qty: 1 },
   ],
@@ -90,10 +90,10 @@ const PRODUCT = {
   //   { name: "SIDI ALI 33CL", qty: 1 },
   //   { name: "Capsule Nespresso", qty: 1 },
   // ],
-  "LAIT NESCAFE": [
+  "Lait de marrakech NESCAFE": [
     { name: "Sucre", qty: 3 },
     { name: "SIDI ALI 33CL", qty: 1 },
-    { name: "Lait", qty: 2 },
+    { name: "Lait de marrakech", qty: 2 },
     { name: "Nescafe", qty: 1 },
   ],
   "SUPPLEMENT NESCAFE": [
@@ -107,21 +107,21 @@ const PRODUCT = {
   ],
   "JUS CITRON": [
     { name: "Citron", qty: 500 },
-    { name: "Sucre Grand", qty: 2 }
+    { name: "Sucre_Grand", qty: 2 }
   ],
   "JUS POMME": [
     { name: "Pomme", qty: 230 },
-    { name: "Lait", qty: 4 },
+    { name: "Lait de marrakech", qty: 4 },
     { name: "Sucre", qty: 2 }
   ],
   "JUS BANANE": [
     { name: "Banane", qty: 200 },
-    { name: "Lait", qty: 4 },
+    { name: "Lait de marrakech", qty: 4 },
     { name: "Sucre", qty: 2 }
   ],
   "JUS AVOCAT": [
     { name: "Avocat", qty: 220 },
-    { name: "Lait", qty: 4 },
+    { name: "Lait de marrakech", qty: 4 },
     { name: "Sucre", qty: 2 }
   ],
   "JUS POIRE": [

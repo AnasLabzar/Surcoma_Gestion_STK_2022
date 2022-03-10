@@ -1,5 +1,5 @@
 const db = require("../models");
-const dataCaisse = db.dataCaisse;
+const Fournisseur = db.Fournisseur;
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
   // Validate request
@@ -8,32 +8,18 @@ exports.create = (req, res) => {
   //   return;
   // }
   // Create a Tutorial
-  const data = {
-    "nasnas": [
-      { "7lib": "20g" },
-      { "9ahwa": "50g" }
-    ],
-    "atay": [
-      { "atay": "20g" },
-      { "skar": "2t" }
-    ]
-  }
-  const product = new Product({
-    title: req.body.title,
-    Nom_Article: req.body.Nom_Article,
-    Désignation: req.body.Désignation,
-    Nom_fournisseur: req.body.Nom_fournisseur,
-    N_Catégorie: req.body.N_Catégorie,
-    TVA: req.body.TVA,
-    Prix_unitaire_HT: req.body.Prix_unitaire_HT,
-    Prix_TTC: req.body.Prix_TTC,
-    Init_qty: req.body.Init_qty,
-    Curr_qty: req.body.Curr_qty,
-    STK_actuel: req.body.STK_actuel
+
+  const fournisseur = new Fournisseur({
+    Username: req.body.Username,
+    Supplier_Type: req.body.Supplier_Type,
+    Adresse: req.body.Adresse,
+    Mail: req.body.Mail,
+    Tel: req.body.Tel,
+    Fax: req.body.Fax
   });
   // Save Tutorial in the database
-  product
-    .save(product)
+  fournisseur
+    .save(fournisseur)
     .then(data => {
       res.send(data);
     })
@@ -46,9 +32,9 @@ exports.create = (req, res) => {
 };
 // Retrieve all Tutorials from the database.
 exports.findAll = (req, res) => {
-  const title = req.query.title;
-  var condition = title ? { title: { $regex: new RegExp(title), $options: "i" } } : {};
-  Product.find(condition)
+  const Username = req.query.Username;
+  var condition = Username ? { Username: { $regex: new RegExp(Username), $options: "i" } } : {};
+  Fournisseur.find(condition)
     .then(data => {
       res.send(data);
     })
@@ -62,7 +48,7 @@ exports.findAll = (req, res) => {
 // Find a single Tutorial with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
-  Product.findById(id)
+  Fournisseur.findById(id)
     .then(data => {
       if (!data)
         res.status(404).send({ message: "Not found Tutorial with id " + id });
@@ -82,7 +68,7 @@ exports.update = (req, res) => {
     });
   }
   const id = req.params.id;
-  Product.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+  Fournisseur.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
     .then(data => {
       if (!data) {
         res.status(404).send({
@@ -99,7 +85,7 @@ exports.update = (req, res) => {
 // Delete a Tutorial with the specified id in the request
 exports.delete = (req, res) => {
   const id = req.params.id;
-  Product.findByIdAndRemove(id)
+  Fournisseur.findByIdAndRemove(id)
     .then(data => {
       if (!data) {
         res.status(404).send({
@@ -119,18 +105,18 @@ exports.delete = (req, res) => {
 };
 // Delete all Tutorials from the database.
 exports.deleteAll = (req, res) => {
-  Product.deleteMany({})
-  .then(data => {
-    res.send({
-      message: `${data.deletedCount} Tutorials were deleted successfully!`
+    Fournisseur.deleteMany({})
+    .then(data => {
+      res.send({
+        message: `${data.deletedCount} Tutorials were deleted successfully!`
+      });
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while removing all tutorials."
+      });
     });
-  })
-  .catch(err => {
-    res.status(500).send({
-      message:
-        err.message || "Some error occurred while removing all tutorials."
-    });
-  });
 };
 // Find all published Tutorials
 // exports.findAllPublished = (req, res) => {
