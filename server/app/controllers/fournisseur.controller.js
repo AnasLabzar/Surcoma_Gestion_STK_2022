@@ -10,6 +10,7 @@ exports.create = (req, res) => {
   // Create a Tutorial
 
   const fournisseur = new Fournisseur({
+    Anas: req.body.Anas,
     Username: req.body.Username,
     Supplier_Type: req.body.Supplier_Type,
     Adresse: req.body.Adresse,

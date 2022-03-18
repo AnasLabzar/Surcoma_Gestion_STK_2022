@@ -46,6 +46,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "5.15.3",
     "@mui/styles": "^5.5.0",
+    "@testing-library/react": "^12.1.4",
     "axios": "^0.26.0",
     "bootstrap": "4.6.0",
     "chart.js": "2.9.4",
@@ -62,6 +63,7 @@
     "react-scripts": "4.0.3",
     "react-select": "3.1.0",
     "react-select-search": "^3.0.9",
+    "react-test-renderer": "^17.0.2",
     "react-virtualized": "^9.22.3",
     "reactstrap": "8.9.0",
     "sass": "^1.49.9",

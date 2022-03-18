@@ -10,7 +10,7 @@ const PRODUCT = {
   ],
   "THE MAROCAIN GRAND": [
     { name: "The", qty: 20 },
-    { name: "Sucre_Grand", qty: 4 }
+    { name: "Sucre Grand", qty: 4 }
   ],
 
   "CAFE ESPRESSO": [
@@ -505,21 +505,29 @@ exports.upload = async (req, res) => {
 };
 
 exports.stock = async (req, res) => {
-
+  let orange = 0
   try {
     const { name, qty } = req.body;
     const targetProduct = PRODUCT[name]
     if (targetProduct) {
       targetProduct.forEach(async (prd) => {
         const product = await Product.findOne({ Nom_Article: prd.name })
-        console.log(product);
         if (!product) {
-          console.log("product not found");
+          return
         } else {
-          product.Curr_qty = product.Curr_qty - (qty * +prd.qty);
-          console.log(product);
-          await product.save();
 
+
+          let curr = (product.Curr_qty - (qty * +prd.qty));
+          product.Curr_qty = curr
+          await product.save();
+          if (prd.name == "Orange") {
+            console.log({
+              "default ": prd.qty,
+              "5ssrna : ": qty,
+              "next db ": curr,
+              "db : ": product.Curr_qty,
+            });
+          }
         }
       })
       res.json({

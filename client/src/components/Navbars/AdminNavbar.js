@@ -35,6 +35,8 @@ import {
 } from "reactstrap";
 
 const AdminNavbar = (props) => {
+  const dataUser = JSON.parse(localStorage.getItem("login"));
+  console.log(dataUser.token.User.Username);
   return (
     <>
       <Navbar className="navbar-top navbar-dark" expand="md" id="navbar-main">
@@ -72,7 +74,7 @@ const AdminNavbar = (props) => {
                   </span>
                   <Media className="ml-2 d-none d-lg-block">
                     <span className="mb-0 text-sm font-weight-bold">
-                      Jessica Jones
+                      {dataUser && dataUser.token.User.Username}
                     </span>
                   </Media>
                 </Media>

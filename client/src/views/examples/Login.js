@@ -31,8 +31,41 @@ import {
   Row,
   Col,
 } from "reactstrap";
+import React, { useEffect, useState } from "react";
+import Axios from "axios";
+import { setRef } from "@mui/material";
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
+
+
+  const [email, setEmail] = useState([]);
+  const [password, setPassword] = useState([]);
+  const [error, setError] = useState(false);
+  let history = useHistory();
+
+
+
+  const login = (e) => {
+    e.preventDefault();
+    Axios.post("http://localhost:8080/Surcoma/User/Login", {
+      email,
+      password,
+    }).then(({data}) => {
+      // console.log(response);
+      console.log("response", data);
+      localStorage.setItem("login", JSON.stringify({
+        success: true,
+        token: data
+      })
+      );
+      setError("");
+      setEmail("");
+      setPassword("");
+      history.push("/admin")
+    })
+      .catch((error) => setError(true))
+  };
   return (
     <>
       <Col lg="5" md="7">
@@ -41,7 +74,8 @@ const Login = () => {
             <div className="text-center text-muted mb-4">
               <small>Or sign in with credentials</small>
             </div>
-            <Form role="form">
+            {error && <p className="text-red text-center text-[14px]">Incorrect Email or Password</p>}
+            <Form data-testid="login-1" role="form" action="/admin" method="POST" onSubmit={login}>
               <FormGroup className="mb-3">
                 <InputGroup className="input-group-alternative">
                   <InputGroupAddon addonType="prepend">
@@ -50,9 +84,13 @@ const Login = () => {
                     </InputGroupText>
                   </InputGroupAddon>
                   <Input
+                    onChange={(event) => {
+                      setEmail(event.target.value);
+                    }}
                     placeholder="Email"
                     type="email"
                     autoComplete="new-email"
+                    value={email}
                   />
                 </InputGroup>
               </FormGroup>
@@ -64,8 +102,12 @@ const Login = () => {
                     </InputGroupText>
                   </InputGroupAddon>
                   <Input
+                    onChange={(event) => {
+                      setPassword(event.target.value);
+                    }}
                     placeholder="Password"
                     type="password"
+                    value={password}
                     autoComplete="new-password"
                   />
                 </InputGroup>
@@ -84,7 +126,11 @@ const Login = () => {
                 </label>
               </div>
               <div className="text-center">
-                <Button className="my-4" color="primary" type="button">
+                <Button
+                  className="my-4"
+                  color="primary"
+                  type="submit"
+                >
                   Sign in
                 </Button>
               </div>

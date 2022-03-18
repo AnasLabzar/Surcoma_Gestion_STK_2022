@@ -545,8 +545,8 @@ export const STK = [
      id: 109
     },
     {
-     label: "orange fruit fr",
-     value: "orange fruit fr",
+     label: "Orange",
+     value: "Orange",
      id: 110
     },
     {

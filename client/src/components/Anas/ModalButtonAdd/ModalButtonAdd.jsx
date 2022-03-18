@@ -27,10 +27,9 @@ export default function BtnAddProduct() {
   const [Qte, setQte] = useState(0);
   const [STK_actuel, setSTK_actuel] = useState(100);
 
- useEffect(() => {
-   console.log(Nom_Article);
- }, [Nom_Article])
- 
+  useEffect(() => {
+    console.log(Nom_Article);
+  }, [Nom_Article]);
 
   const addToList = () => {
     Axios.post("http://localhost:8080/Surcoma/post", {
@@ -73,7 +72,7 @@ export default function BtnAddProduct() {
                         alt="Workflow"
                       />
                     </div>
-                    <form className="mt-5 space-y-6" action="#" method="POST">
+                    <form className="mt-5 space-y-6" action="/Admin/Product" method="POST">
                       <input
                         type="hidden"
                         name="remember"
@@ -83,14 +82,12 @@ export default function BtnAddProduct() {
                         <div>
                           <Select
                             required
-
                             // value={Nom_Article}
                             options={STK}
                             onChange={setNom_Article}
                             placeholder={"Nom d'artcile"}
                             className="appearance-none text-left rounded-none relative block w-full px-1 py-2 border-none border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                           />
-
                         </div>
                         <div>
                           <label htmlFor="password" className="sr-only">

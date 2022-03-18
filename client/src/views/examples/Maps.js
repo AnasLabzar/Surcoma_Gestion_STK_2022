@@ -166,7 +166,8 @@ const MapWrapper = () => {
             (output[elment.Article] = output[elment.Article] || []).push(elment);
             return output;
           }, {});
-
+          console.log(json);
+          let wsslt = 1
           for (const plat in json) {
             if (Object.hasOwnProperty.call(json, plat)) {
               const send = {
@@ -174,15 +175,18 @@ const MapWrapper = () => {
                 qty: json[plat].length,
               };
 
-              let ress = await fetch('http://localhost:8080/exel/stock', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(send)
-              })
-              let res = await ress.json()
-              console.log(res);
+              setTimeout(async () => {
+                let ress = await fetch('http://localhost:8080/exel/stock', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify(send)
+                })
+                let res = await ress.json()
+              }, 2 * wsslt);
+              console.log(wsslt);
+              wsslt++
             }
           }
         }
@@ -225,7 +229,7 @@ const MapWrapper = () => {
             <label><h5>Upload Excel file</h5></label>
             <br></br>
             <input type='file' className='form-control'
-              onChange={handleFile}  required></input>
+              onChange={handleFile} required></input>
             {excelFileError && <div className='text-danger'
               style={{ marginTop: 5 + 'px' }}>{excelFileError}</div>}
             <button type='submit' onClick={BtnModalTimeOut} className='btn btn-success'

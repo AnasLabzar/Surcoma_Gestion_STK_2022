@@ -20,6 +20,8 @@
 import { Button, Container, Row, Col } from "reactstrap";
 
 const UserHeader = () => {
+  const dataUser = localStorage.getItem("login");
+  console.log(dataUser);
   return (
     <>
       <div

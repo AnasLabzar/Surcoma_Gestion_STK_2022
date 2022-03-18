@@ -1,6 +1,7 @@
 module.exports = mongoose => {
     var schema = mongoose.Schema(
       {
+        Anas: String,
         Username: String,
         Supplier_Type: String,
         Adresse: Array,
