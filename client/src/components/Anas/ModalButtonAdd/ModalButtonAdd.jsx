@@ -20,6 +20,9 @@ export default function BtnAddProduct() {
   const [Désignation, setDésignation] = useState("");
   console.log(Désignation);
   const [Nom_fournisseur, setNom_fournisseur] = useState("");
+  const [Username, setUsername] = useState([]);
+  console.log(Username);
+
   const [N_Catégorie, setN_Catégorie] = useState("");
   const [TVA, setTVA] = useState(0);
   const [Prix_unitaire_HT, setPrix_unitaire_HT] = useState(0);
@@ -30,6 +33,12 @@ export default function BtnAddProduct() {
   useEffect(() => {
     console.log(Nom_Article);
   }, [Nom_Article]);
+
+  useEffect(() => {
+    if (Username) {
+      let setUsername = Username.map((e) => e.Username);
+    }
+  }, [Username]);
 
   const addToList = () => {
     Axios.post("http://localhost:8080/Surcoma/post", {
@@ -44,6 +53,16 @@ export default function BtnAddProduct() {
       STK_actuel,
     });
   };
+
+  useEffect(() => {
+    Axios.get("http://localhost:8080/Surcoma/Fournisseur/get").then(
+      (response) => {
+        setUsername(response.data);
+        // console.log(response);
+      }
+    );
+  }, []);
+
   const [showModal, setShowModal] = React.useState(false);
   return (
     <>
@@ -72,7 +91,11 @@ export default function BtnAddProduct() {
                         alt="Workflow"
                       />
                     </div>
-                    <form className="mt-5 space-y-6" action="/Admin/Product" method="POST">
+                    <form
+                      className="mt-5 space-y-6"
+                      action="/Admin/Product"
+                      method="POST"
+                    >
                       <input
                         type="hidden"
                         name="remember"
@@ -179,21 +202,26 @@ export default function BtnAddProduct() {
                             }}
                           />
                         </div>
-                        <div>
-                          <label htmlFor="password" className="sr-only">
-                            Fournisseur
-                          </label>
-                          <input
-                            type="text"
-                            autoComplete="current-password"
-                            required
-                            className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                            placeholder="Fournisseur"
-                            onChange={(event) => {
-                              setNom_fournisseur(event.target.value);
-                            }}
-                          />
-                        </div>
+                        {Username.map((val, key) => (
+                          <div>
+                            <label htmlFor="password" className="sr-only">
+                              Fournisseur
+                            </label>
+                            <select key={key} name="" id="">
+                              <option value={val}>this:{val}</option>
+                            </select>
+                            {/* <input
+                              type="text"
+                              autoComplete="current-password"
+                              required
+                              className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                              placeholder="Fournisseur"
+                              onChange={(event) => {
+                                setNom_fournisseur(event.target.value);
+                              }}
+                            /> */}
+                          </div>
+                        ))}
                       </div>
 
                       <div>

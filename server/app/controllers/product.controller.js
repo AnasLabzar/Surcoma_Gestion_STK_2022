@@ -1,5 +1,14 @@
 const db = require("../models");
+var nodemailer = require('nodemailer');
+
 const Product = db.products;
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'principeanas80@gmail.com',
+    pass: 'easycafe'
+  }
+});
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
   // Validate request
@@ -8,7 +17,7 @@ exports.create = (req, res) => {
   //   return;
   // }
   // Create a Tutorial
-
+ 
   const product = new Product({
     title: req.body.title,
     Nom_Article: req.body.Nom_Article,
@@ -41,6 +50,27 @@ exports.findAll = (req, res) => {
   var condition = title ? { title: { $regex: new RegExp(title), $options: "i" } } : {};
   Product.find(condition)
     .then(data => {
+      data.map(val => {
+        if (Math.trunc((val.Curr_qty / val.Init_qty) * 100) < 40) {
+          var mailOptions = {
+            from: 'principeanas80@gmail.com',
+            to: 'ajsmarrakechmedina@gmail.com',
+            subject: 'Sending Email of product ' + val.Nom_Article,
+            text: `Hello friend the product ${val.Nom_Article} is 9areb it9ada`,
+            html: '<h1>Anas Labzar</h1>'
+          };
+          transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+              console.log("anas", error);
+            } else {
+              console.log('Email sent: ' + info.response);
+            }
+          });
+        }
+      }
+
+      )
+
       res.send(data);
     })
     .catch(err => {

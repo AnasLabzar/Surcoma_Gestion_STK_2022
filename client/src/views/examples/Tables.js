@@ -26,11 +26,19 @@ import ProgressBar from "components/Anas/progressBar/progressBar";
 // core components
 import Header from "components/Headers/Header.js";
 import BtnAddProduct from "components/Anas/ModalButtonAdd/ModalButtonAdd";
+import { STK } from "../../assets/json/Stock  - Feuille 1 (2)-converted (1)"
 
 
 const Tables = () => {
 
   const [productList, setproductList] = useState([]);
+  const [Nom_Article, setNom_Article] = useState(STK[1].value);
+  console.log("this is:" + Nom_Article);
+
+  useEffect(() => {
+    console.log(Nom_Article);
+  }, [Nom_Article]);
+
   console.log(productList);
   // console.log(productList);
 
@@ -48,14 +56,14 @@ const Tables = () => {
   // useEffect(() => {
   //   fetchData()
   // }, [])
-  
+
   useEffect(() => {
     Axios.get("http://localhost:8080/Surcoma/get").then((response) => {
       setproductList(response.data);
       // console.log(response);
     });
   }, []);
- 
+
   return (
     <>
       <Header />
@@ -91,30 +99,36 @@ const Tables = () => {
                     <th scope="col" />
                   </tr>
                 </thead>
-                {productList.map((val, key) => (
+                {STK.map((data) => (
                   <tbody>
-                    <tr key={key}>
+                    <tr key={data.id}>
                       <th scope="row">
                         <span className="mb-0 text-sm">
-                          {val.Nom_Article}
+                          {data.label}
                         </span>
                       </th>
-                      <td>{val.Désignation}</td>
+                      <td>{data.designation}</td>
                       <td>
-                        {val.N_Catégorie}
+                        {data.categorie}
                       </td>
 
-                      <td>
-                        {val.Curr_qty}
-                      </td>
+                      {/* {productList.map((val, key) => ( */}
+                        <>
+                          <td>
 
-                      <td>
-                        <ProgressBar
-                          key={key}
-                          bgcolor={val.STK_actuel}
-                          completed={ Math.trunc((val.Curr_qty/val.Init_qty)*100)}
-                        />
-                      </td>
+                            {/* {productList[].Curr_qty} */}
+                            {/* QuantityDB */}
+                            hello
+                          </td>
+                          <td  >
+                            <ProgressBar
+                              key={key}
+                              bgcolor={val.STK_actuel}
+                              completed={Math.trunc((val.Curr_qty / val.Init_qty) * 100)}
+                            />
+                          </td>
+                        </>
+                      {/* ))} */}
                       <td className="text-center">
                         <i className="fa fa-eye" />
 
