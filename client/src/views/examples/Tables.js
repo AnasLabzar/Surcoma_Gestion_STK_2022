@@ -122,9 +122,9 @@ const Tables = () => {
                           </td>
                           <td  >
                             <ProgressBar
-                              key={key}
-                              bgcolor={val.STK_actuel}
-                              completed={Math.trunc((val.Curr_qty / val.Init_qty) * 100)}
+                              key={data}
+                              bgcolor={data.STK_actuel}
+                              completed={Math.trunc((data.Curr_qty / data.Init_qty) * 100)}
                             />
                           </td>
                         </>

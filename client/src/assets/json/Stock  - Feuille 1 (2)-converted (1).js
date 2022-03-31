@@ -1111,7 +1111,6 @@ export const STK =[
   },
   {
     "id": "186",
-    id 
     "label": "Banane",
     "designation": "",
     "categorie": ""
